@@ -1,3 +1,4 @@
-*.csv
+*BTC*.csv
 *.json
 *.pyc
+venv
