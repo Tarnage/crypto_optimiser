@@ -25,8 +25,8 @@ BOUNDS = [
   (0.0, 6.0),   # shit = shift/lag (for buy delay)
   (0.0, 6.0),   # shit = shift/lag (for sell delay)
 ]
-POP_SIZE = 15          # population size
-GENS = 30                   # number of generations
+POP_SIZE = 60          # population size
+GENS = 100                   # number of generations
 LAMBDA = 5.0          # try 1, 5, 10 … and see what moves the gap histogram
 SEED_ITER = 60         # number of runs per algorithm
 
