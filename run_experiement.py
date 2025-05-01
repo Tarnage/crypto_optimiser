@@ -73,23 +73,53 @@ algs = {
 }
 
 # ------------- parallel worker -------------
-def run_single_experiment(name_and_factory_seed, verbose=False):
+def run_single_experiment(name_and_factory_seed, verbose=False, tol=1e-4, patience=10):
     name, factory, run_seed = name_and_factory_seed
     opt = factory(run_seed)
     start = time.time()
-    for _ in range(GENS):
+
+    prev_best = float("inf")
+    stall_count = 0
+    fitness_history = []
+
+    for gen in range(GENS):
         thetas = opt.ask()
         scores = [obj_train(t) for t in thetas]
         opt.tell(thetas, scores)
+
+        current_best = opt.gbest_val
+        fitness_history.append(current_best)
+
+        # Check for early stopping
+        improvement = prev_best - current_best
+        if improvement < tol:
+            stall_count += 1
+        else:
+            stall_count = 0 #reset stall count
+            prev_best = current_best
+
+        if stall_count >= patience:
+            if verbose:
+                print(f"[{name} | seed {run_seed}] Early stopping at generation {gen+1}")
+            break
+
     best_theta = opt.gbest_pos.tolist()
     train_fit  = opt.gbest_val
     test_fit   = obj_test(best_theta, verbose=verbose)
+    cleaned_history = [float(x) for x in fitness_history]
+
     return {
-        "alg": name, "seed": run_seed,
-        "train": train_fit, "test": test_fit,
+        "alg": name,
+        "seed": run_seed,
+        "train": train_fit,
+        "test": test_fit,
         "theta [d1, t1, a1,  d2, t2, a2, shift]": json.dumps(best_theta),
         "pop_size": POP_SIZE,
-        "gens": GENS,
+        "gens": gen + 1,
+        "stalled_gens": stall_count,
+        "tolerance": tol,
+        "patience": patience,
+        "fitness_history": cleaned_history,
         "time(seconds)": round(time.time() - start, 2),
     }
 
