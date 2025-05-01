@@ -67,9 +67,9 @@ def create_abc(seed):
 # -------------  experiment loop --------
 algs = {
     "PSO": create_pso,
-    # "CAB": create_cab,
-    # "GWO": create_gwo,
-    # "ABC": create_abc,
+    "CAB": create_cab,
+    "GWO": create_gwo,
+    "ABC": create_abc,
 }
 
 # ------------- parallel worker -------------

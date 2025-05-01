@@ -28,7 +28,7 @@ BOUNDS = [
 POP_SIZE = 50          # population size
 GENS = 100                   # number of generations
 LAMBDA = 5.0          # try 1, 5, 10 … and see what moves the gap histogram
-SEED_ITER = 1000         # number of runs per algorithm
+SEED_ITER = 20         # number of runs per algorithm
 
 # Define log files
 
@@ -37,7 +37,7 @@ AUX_LOG_FOLDER = "logs/"
 # Define the path to the data file
 TRAIN_TO = "2019-12-31" # date to split train/test data
 DATA_FILE = "data/BTC-Daily.csv" # path to the data file
-
+# DATA_FILE = "data/BTC-Hourly.csv" 
 # Define results file
 RESULTS_FOLDER = "results/" # path to the results file
 
