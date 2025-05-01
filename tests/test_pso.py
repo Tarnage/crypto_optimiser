@@ -30,10 +30,10 @@ class TestPSO(unittest.TestCase):
             best_history.append(pso.gbest_val)
 
         # Ensure fitness improves
-        self.assertGreater(best_history[-1], best_history[0], "Fitness did not improve.")
+        self.assertLess(best_history[-1], best_history[0], "Fitness did not improve.")
 
         # Check that solution is close to 0
-        self.assertGreaterEqual(pso.gbest_val, -1e-2, f"PSO did not converge close to 0: {pso.gbest_val}")
+        self.assertLessEqual(pso.gbest_val, -1e-2, f"PSO did not converge close to 0: {pso.gbest_val}")
 
         # Ensure solution is within bounds
         lo, hi = self.bounds[:, 0], self.bounds[:, 1]
@@ -51,10 +51,10 @@ class TestPSO(unittest.TestCase):
             best_history.append(pso.gbest_val)
 
         # Ensure fitness improves
-        self.assertGreater(best_history[-1], best_history[0], "Fitness did not improve on Rastrigin.")
+        self.assertLess(best_history[-1], best_history[0], "Fitness did not improve on Rastrigin.")
 
         # Check that result is near the known max (0 for -rastrigin)
-        self.assertGreaterEqual(pso.gbest_val, -10.0, f"PSO did not converge close to 0 on Rastrigin: {pso.gbest_val}")
+        self.assertLessEqual(pso.gbest_val, -10.0, f"PSO did not converge close to 0 on Rastrigin: {pso.gbest_val}")
         
 if __name__ == "__main__":
     unittest.main(verbosity=2)

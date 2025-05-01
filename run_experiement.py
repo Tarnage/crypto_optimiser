@@ -67,9 +67,9 @@ def create_abc(seed):
 # -------------  experiment loop --------
 algs = {
     "PSO": create_pso,
-    "CAB": create_cab,
-    "GWO": create_gwo,
-    "ABC": create_abc,
+    # "CAB": create_cab,
+    # "GWO": create_gwo,
+    # "ABC": create_abc,
 }
 
 # ------------- parallel worker -------------
@@ -113,7 +113,7 @@ def run_single_experiment(name_and_factory_seed, verbose=False, tol=1e-4, patien
         "seed": run_seed,
         "train": train_fit,
         "test": test_fit,
-        "theta [d1, t1, a1,  d2, t2, a2, shift]": json.dumps(best_theta),
+        "theta": json.dumps(best_theta),
         "pop_size": POP_SIZE,
         "gens": gen + 1,
         "stalled_gens": stall_count,

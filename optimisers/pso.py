@@ -10,20 +10,20 @@ class PSO(Optimiser):
         self.vel = self.rng.uniform(-span, span, self.pos.shape) * 0.1
         self.w, self.c1, self.c2 = w, c1, c2
         self.pbest_pos = self.pos.copy()
-        self.pbest_val = np.full(pop_size, -np.inf)
+        self.pbest_val = np.full(pop_size, np.inf)
         self.gbest_pos = None
-        self.gbest_val = -np.inf
+        self.gbest_val = np.inf
 
     def ask(self):
         return self.pos.tolist()
 
     def tell(self, thetas, fitnesses):
         f = np.array(fitnesses)
-        better = f > self.pbest_val
+        better = f < self.pbest_val
         self.pbest_val[better] = f[better]
         self.pbest_pos[better] = self.pos[better]
-        idx_best = f.argmax()
-        if f[idx_best] > self.gbest_val:
+        idx_best = f.argmin()
+        if f[idx_best] < self.gbest_val:
             self.gbest_val = f[idx_best]
             self.gbest_pos = self.pos[idx_best].copy()
 
