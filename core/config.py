@@ -19,16 +19,16 @@ BOUNDS = [
   (0,    3),    # t₁ ∈ [0,2]               (fast‐MA type code: 0=SMA,1=LMA,2=EMA,3=MACD)
   (0.05, 0.5),  # α₁ ∈ [0.05,0.5]          (fast‐EMA decay; only used if t₁==2)
 
-  (10, 200),    # d₂ = slow window
+  (20, 400),    # d₂ = slow window
   (0,    3),    # t₂ ∈ [0,2]               (slow‐MA type code)
   (0.05, 0.5),   # α₂ ∈ [0.05,0.5]          (slow‐EMA decay; only if t₂==2)
   (5.0, 12.0),   # shit = shift/lag (for buy delay)
-  (5.0, 12.0),   # shit = shift/lag (for sell delay)
+  (5.0, 15.0),   # shit = shift/lag (for sell delay)
 ]
-POP_SIZE = 30          # population size
+POP_SIZE = 50          # population size
 GENS = 100                   # number of generations
 LAMBDA = 5.0          # try 1, 5, 10 … and see what moves the gap histogram
-SEED_ITER = 10         # number of runs per algorithm
+SEED_ITER = 2000         # number of runs per algorithm
 
 # Define log files
 
