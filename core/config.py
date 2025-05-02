@@ -28,7 +28,7 @@ BOUNDS = [
 POP_SIZE = 50          # population size
 GENS = 100                   # number of generations
 LAMBDA = 5.0          # try 1, 5, 10 … and see what moves the gap histogram
-SEED_ITER = 2000         # number of runs per algorithm
+SEED_ITER = (2001, 4000)         # number of runs per algorithm
 
 # Define log files
 

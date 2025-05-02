@@ -133,9 +133,11 @@ if __name__ == "__main__":
     results = []
     all_jobs = []
 
+    seed_start, seed_end = SEED_ITER
+    seed_range = range(seed_start, seed_end)
     # Pre-build all jobs for all algorithms
     for name, factory in algs.items():
-        for seed in range(SEED_ITER):
+        for seed in seed_range:
             all_jobs.append((name, factory, seed))
 
     # Informative outer bar
@@ -145,7 +147,7 @@ if __name__ == "__main__":
         results.append(res)
         outer.update()
 
-    with mp.Pool(processes=min(cpu_count, SEED_ITER)) as pool:
+    with mp.Pool(processes=min(cpu_count, len(seed_range))) as pool:
         for job in all_jobs:
             pool.apply_async(run_single_experiment, args=(job,), callback=callback)
         pool.close()
