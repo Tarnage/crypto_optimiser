@@ -16,7 +16,7 @@ class CAB(Optimiser):
     alpha : float
         Pull towards global best.
     beta : float
-        Random‑walk magnitude.
+        Random-walk magnitude.
     pop_size : int
         Number of agents.
     """

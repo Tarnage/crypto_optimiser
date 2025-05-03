@@ -1,128 +1,148 @@
 # 📈 Trading Bot README
 
 This project implements a **backtestable, evaluation-ready crossover trading bot** for cryptocurrency markets (tested on BTC daily data).  
-The bot logic, fitness evaluation, and plotting are fully modular and optimised for testing with nature-inspired optimisation algorithms (CAB, PSO, GWO, etc.).
+The bot logic and fitness evaluation, are fully modular and optimised for testing with nature-inspired optimisation algorithms (CAB, PSO, GWO, ABC).
+It supports full experimentation, single-run evaluation, and visual analysis using historical BTC-Daily data.
 
----
+## 🚀 Features
 
-## ⚙️ Core Functionality
+- Dual moving-average crossover strategy (configurable)
 
-### Bot logic
+- 4 optimizers supported: PSO, CAB, GWO, ABC
 
-The bot uses a **two-signal crossover** strategy:
+- Multi-core experiment execution
 
-- **Fast signal**: moving average with shorter window (e.g., 10 days).
-- **Slow signal**: moving average with longer window (e.g., 60 days).
+- 3% trading fee built into simulation
 
-When the **fast signal crosses above** the slow signal → **Buy**.  
-When the **fast signal crosses below** the slow signal → **Sell**.
+- Detailed backtest metrics: drawdown, win rate, trade return, and more
 
-All trades:
-- Use 100% of available USD to buy BTC, or 100% of BTC to sell into USD.
-- Apply a **3% transaction fee** per trade (both entry and exit).
-- **Force close** any open BTC position at the last available price.
+- Configurable via core/config.py
 
----
-
-## 🧠 Moving Average Types
-
-| Code | Type | Description |
-|------|------|-------------|
-| 0 | SMA | Simple Moving Average (equal weights) |
-| 1 | LMA | Linear Moving Average (descending weights) |
-| 2 | EMA | Exponential Moving Average (decay with α) |
-| 3 | MACD | Moving Average Convergence Divergence |
-
-These are generated using `make_signal(prices, window, type, alpha)`.
-
----
-
-## 🏗️ Key Components
-
-| File | Purpose |
-|------|---------|
-| `core/bot.py` | Crossover signal generation, MA filters, and helpers. |
-| `evaluate(theta, prices_full)` | Main backtest loop. Executes trades, tracks equity, computes detailed metrics. |
-| `foward_test.ipynb` | Plots Close price, fast/slow indicators, and buy/sell points for each bot configuration. |
-
----
-
-## 📊 Metrics Collected
-
-Each run of `evaluate` returns:
-
-- **Final USD balance** (`holdings_usd`)
-- **Trade statistics** (in a dictionary `aux`):
-  - `trades`: total number of buy/sell events
-  - `num_buys`, `num_sells`
-  - `total_return`: (% gain/loss over starting USD)
-  - `max_drawdown`: max peak-to-trough decline
-  - `win_rate`: fraction of profitable trades
-  - `avg_trade_return`: mean % return per trade
-  - `time_in_market`: % of time holding BTC
-  - `trade_info`: detailed list (entry, exit, profit, duration)
-
-This structure makes it easy to compare different algorithmic optimisers fairly.
-
----
-
-## 📦 Inputs / Outputs Summary
-
-| Component | Input | Output |
-|-----------|-------|--------|
-| `evaluate(theta, prices)` | Bot config and close prices | Final USD, metrics dictionary |
-| `crossover_signals(prices, theta)` | Close prices and config | Arrays of buy and sell indices |
-| `plot_crossovers(best_df, prices_test, dates_test)` | Best configs + test prices | Crossover plots |
-
----
-
-## 🧹 Assumptions & Notes
-
-- Start capital: **$1000 USD**.
-- Trade fees: **3%** per transaction.
-- "All-in" trading: **no position sizing or leverage**.
-- Crossover signals must be aligned correctly via moving average padding (mirror technique).
-- No slippage model: trades execute at close price of the current candle.
-
----
-
-## 🚀 Developer Quick Start Checklist
-
-1. **Prepare your data**  
-   - CSV with columns: `Date`, `Close`.
-   - Use daily candles (can extend to hourly later if needed).
-
-2. **Train the bot**  
-   - Use any optimiser (CAB, PSO, Random Search) to propose `theta = [d₁, t₁, α₁, d₂, t₂, α₂]`.
-   - Pass `theta` to `evaluate(theta, prices_train)`.
-
-3. **Log the results**  
-   - Save final USD balance and `aux` metrics per run.
-   - Track `theta`, seed, and algorithm name.
-
-4. **Test the best bots**  
-   - Evaluate top configurations on the `prices_test` slice.
-   - Record out-of-sample performance.
-
-5. **Visualise the results**  
-   - Call `plot_crossovers(best_df, prices_test, dates_test)`.
-   - Inspect buy/sell points, fast/slow indicator lines, and general signal quality.
-
----
-
-## 🧠 Quick Definitions
-
-| Term | Meaning |
-|------|--------|
-| **Equity curve** | Time series of total USD value at each timestep. |
-| **Max drawdown** | Biggest relative loss from a peak in equity. |
-| **Win rate** | % of trades that closed profitably. |
-| **Time in market** | % of periods where a BTC position was held. |
-
----
-
-## ✅ Final Thoughts
+- Produces test/train fitness and exportable CSVs
 
 
----
+## 🗂️ Folder Structure
+```
+.
+├── data/                  # Historical BTC data (CSV)
+├── results/               # Experiment outputs
+├── logs/                  # Optional detailed logs
+├── core/                  # Signal logic, evaluation, config
+├── optimisers/            # PSO, CAB, ABC, GWO implementations
+├── run_experiment.py      # Batch experiment script
+├── run_single.py          # Run one optimizer with one seed
+├── forward_test.ipynb     # Visualize crossover results
+├── README.md              # This file
+└── requirements.txt       # Python dependencies
+```
 
+## 📥 Setup
+
+1. Clone this repo
+
+2. Install dependencies via `requirements.txt`
+
+3. Put your BTC data in `data/BTC-Daily.csv`
+
+## ⚙️ Configuration
+
+All key settings are located in `core/config.py`
+
+```python
+BOUNDS = [
+  (2, 10),      # d1: Fast MA window
+  (0, 3),       # t1: MA type (0=SMA, 1=LMA, 2=EMA, 3=MACD)
+  (0.05, 0.5),  # a1: Smoothing alpha
+
+  (20, 400),    # d2: Slow MA window
+  (0, 3),       # t2: MA type
+  (0.05, 0.5),  # a2: Smoothing alpha
+  (5.0, 12.0),  # buy_delay
+  (5.0, 15.0),  # sell_delay
+]
+
+POP_SIZE = 50
+GENS = 100                 # Maximum number of generation/epochs iterations.
+
+# SEED_ITER = (start, end): run each optimizer from start to end-1
+# e.g. (2001, 4000) will perform 1999 runs per algorithm
+SEED_ITER = (2001, 4000)  
+
+DATA_FILE = "data/BTC-Daily.csv"
+TRAIN_TO = "2019-12-31"
+RESULTS_FOLDER = "results/"
+AUX_LOG_FOLDER = "logs/"
+```
+
+## 📊 How to Run
+
+### 🔁 Run Batch Experiments
+
+Run all optimizers across multiple seeds:
+
+```python
+python run_experiment.py
+```
+
+This saves CSV files to results/ with detailed metrics and configurations.
+
+### 🔎 Run a Single Experiment
+
+Manually test a specific optimizer with a seed:
+
+```python
+python run_single_experiment.py
+```
+
+This is great for debugging or visual analysis.
+
+## 📤 Output Format
+
+Example output in CSV:
+
+```python
+alg,seed,train,test,theta,pop_size,gens,...
+PSO,9,-1497.65,-486.12,"[5.2, 1, 0.1, 100, 2, 0.2, 5, 10]",50,12,...
+```
+
+Includes:
+- train, test fitness
+- theta: trading strategy parameters
+- fitness_history: progress over generations
+- more information can be found in `results\header_description.md`
+
+## ✅ Example Visual
+Can be found `foward_test.ipynb`
+
+## 🔧 How to Add a New Optimizer
+
+1. Create a new Python file in `optimisers/` (e.g. `my_algo.py`)
+
+2. Implement a class following the base structure (`optimisers/base.py`):
+
+```python
+class Optimiser:
+    def __init__(self, obj_fn, bounds, seed=0):
+        ...
+    def ask(self):
+        ...
+    def tell(self, thetas, scores):
+        ...
+```
+
+3. Add a factory function to run_experiment.py:
+
+```python
+def create_my_algo(seed):
+    return MyAlgo(obj_train, BOUNDS, pop_size=POP_SIZE, max_gens=GENS, seed=seed)
+```
+
+4. Register your algorithm in the algs dictionary:
+
+```python
+algs = {
+    "PSO": create_pso,
+    "CAB": create_cab,
+    "MY_ALGO": create_my_algo
+}
+```
