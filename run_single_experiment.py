@@ -1,10 +1,28 @@
 import run_experiement as run
+import pandas as pd
+import time
+from datetime import datetime, timedelta
+from core.config import POP_SIZE, GENS, RESULTS_FOLDER
 
-# PSO,2,-46.944008252682714,-1000.0,"
-# [50.0, 0.0, 0.4430023171879848, 26.820495216253747, 3.0, 0.3570286437053328, 5.651866491878499, 2.178182932697313]",30,100,2.62
-# GWO,37,-67636.18203662863,-4884.966194427182,"[5.36920938782157, 1.5838671289498025, 0.05346573607058741, 60.8301298967344, 1.618317468715956, 0.3922127946885823, 5.787625457449795, 5.553553646442637]",60,100,8.43
+#-------------- Define tuple for the experiment --------------
+# This is a tuple of the form (name, factory function, seed)
+PSO = ("PSO", run.create_pso, 269)
+# CAB = ("CAB", run.create_cab, 269)
+# GWO = ("GWO", run.create_gwo, 269)
+# ABC = ("ABC", run.create_abc, 269)
 
-run.run_single_experiment(
-    name_and_factory_seed=("GWO", run.create_gwo, 37),
-    verbose=True,
+
+start_time = time.time()
+results = []
+
+run_res = run.run_single_experiment(
+    name_and_factory_seed=PSO,
+    verbose=True, # Output verbose logs
 )
+
+results.append(run_res)
+
+timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+pd.DataFrame(results).to_csv(f"{RESULTS_FOLDER}single_run_results_pop{POP_SIZE}_g{GENS}_{timestamp}.csv", index=False)
+total_time = time.time() - start_time
+print(f"\n✅ All experiments completed in {timedelta(seconds=total_time)}")
