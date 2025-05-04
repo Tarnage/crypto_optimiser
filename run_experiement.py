@@ -35,7 +35,7 @@ def obj_train(theta, verbose=False):
         utils._log_aux(aux_record, theta, f"{AUX_LOG_FOLDER}train_aux_logs_{timestamp}.json")
     return -profit
 
-def obj_test(best_theta, verbose=False):
+def obj_test(best_theta, verbose=False, name=None, seed=None):
     """
     Objective function for TEST set.
     This is the function that the optimiser will try to minimise.
@@ -44,7 +44,10 @@ def obj_test(best_theta, verbose=False):
     if verbose:
         aux_record = {"profit": profit, **aux}
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        utils._log_aux(aux_record, best_theta, f"{AUX_LOG_FOLDER}test_aux_logs_{timestamp}.json")
+        if name is None and seed is None:
+            utils._log_aux(aux_record, best_theta, f"{AUX_LOG_FOLDER}test_aux_logs_{timestamp}.json")
+        else:
+            utils._log_aux(aux_record, best_theta, f"{AUX_LOG_FOLDER}{name}_{seed}_test_aux_logs_{timestamp}.json")
     return -profit
 
 
@@ -105,7 +108,7 @@ def run_single_experiment(name_and_factory_seed, verbose=False, tol=1e-4, patien
 
     best_theta = opt.gbest_pos.tolist()
     train_fit  = opt.gbest_val
-    test_fit   = obj_test(best_theta, verbose=verbose)
+    test_fit   = obj_test(best_theta, verbose=verbose, name=name, seed=run_seed)
     cleaned_history = [float(x) for x in fitness_history]
 
     return {

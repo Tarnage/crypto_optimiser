@@ -1,0 +1,188 @@
+{
+    "timestamp": "2025-05-03T21:21:32.850389Z",
+    "theta": [
+        3.7496667813184064,
+        0.9910610154449132,
+        0.35381662217467547,
+        172.59853444440796,
+        2.0189255408579316,
+        0.46089907956581555,
+        11.727296386716285,
+        9.963769150571828
+    ],
+    "metrics": {
+        "profit": 9809.076537755618,
+        "trades": 36,
+        "num_buys": 18,
+        "num_sells": 18,
+        "total_return": 8.809076537755619,
+        "max_drawdown": 0.2013560425343704,
+        "win_rate": 0.7777777777777778,
+        "avg_trade_return": 0.1526999458899282,
+        "time_in_market": 0.4134007585335019,
+        "trade_info": [
+            {
+                "entry_idx": 2,
+                "exit_idx": 13,
+                "entry_price": 37712.68,
+                "exit_price": 43901.48,
+                "profit": 95.3054127152991,
+                "pct_profit": 0.0953054127152991,
+                "duration": 11
+            },
+            {
+                "entry_idx": 38,
+                "exit_idx": 63,
+                "entry_price": 35091.11,
+                "exit_price": 47543.3,
+                "profit": 300.969449752487,
+                "pct_profit": 0.274781304153673,
+                "duration": 25
+            },
+            {
+                "entry_idx": 77,
+                "exit_idx": 112,
+                "entry_price": 48389.96,
+                "exit_price": 66945.72,
+                "profit": 421.25661699708076,
+                "pct_profit": 0.3017003516431921,
+                "duration": 35
+            },
+            {
+                "entry_idx": 120,
+                "exit_idx": 131,
+                "entry_price": 60922.85,
+                "exit_price": 62219.44,
+                "profit": -71.02059567748347,
+                "pct_profit": -0.03907530432341891,
+                "duration": 11
+            },
+            {
+                "entry_idx": 153,
+                "exit_idx": 188,
+                "entry_price": 41542.9,
+                "exit_price": 49011.75,
+                "profit": 192.22283772185006,
+                "pct_profit": 0.1100610591701591,
+                "duration": 35
+            },
+            {
+                "entry_idx": 228,
+                "exit_idx": 240,
+                "entry_price": 31388.17,
+                "exit_price": 35289.21,
+                "profit": 112.13363679055874,
+                "pct_profit": 0.05783859616537066,
+                "duration": 12
+            },
+            {
+                "entry_idx": 246,
+                "exit_idx": 263,
+                "entry_price": 34487.11,
+                "exit_price": 37341.11,
+                "profit": 38.483918210200954,
+                "pct_profit": 0.01876470365304602,
+                "duration": 17
+            },
+            {
+                "entry_idx": 266,
+                "exit_idx": 302,
+                "entry_price": 33411.69,
+                "exit_price": 57222.37,
+                "profit": 1277.487568360933,
+                "pct_profit": 0.6114278545323505,
+                "duration": 36
+            },
+            {
+                "entry_idx": 310,
+                "exit_idx": 325,
+                "entry_price": 49128.43,
+                "exit_price": 59766.93,
+                "profit": 487.0027561801762,
+                "pct_profit": 0.14464688647693394,
+                "duration": 15
+            },
+            {
+                "entry_idx": 341,
+                "exit_idx": 352,
+                "entry_price": 51326.11,
+                "exit_price": 59016.39,
+                "profit": 315.53974554497063,
+                "pct_profit": 0.08187667740648963,
+                "duration": 11
+            },
+            {
+                "entry_idx": 366,
+                "exit_idx": 372,
+                "entry_price": 45240.96,
+                "exit_price": 54173.65,
+                "profit": 528.1682408797724,
+                "pct_profit": 0.126677844258831,
+                "duration": 6
+            },
+            {
+                "entry_idx": 398,
+                "exit_idx": 411,
+                "entry_price": 30424.62,
+                "exit_price": 39134.35,
+                "profit": 987.6773343869754,
+                "pct_profit": 0.2102537325034792,
+                "duration": 13
+            },
+            {
+                "entry_idx": 519,
+                "exit_idx": 523,
+                "entry_price": 10689.48,
+                "exit_price": 10744.02,
+                "profit": -308.7040020923214,
+                "pct_profit": -0.054299328124473786,
+                "duration": 4
+            },
+            {
+                "entry_idx": 524,
+                "exit_idx": 525,
+                "entry_price": 10233.42,
+                "exit_price": 10534.31,
+                "profit": -169.01108377895525,
+                "pct_profit": -0.03143501595751955,
+                "duration": 1
+            },
+            {
+                "entry_idx": 542,
+                "exit_idx": 560,
+                "entry_price": 10167.19,
+                "exit_price": 11958.1,
+                "profit": 555.3071141185274,
+                "pct_profit": 0.10663578530547752,
+                "duration": 18
+            },
+            {
+                "entry_idx": 610,
+                "exit_idx": 629,
+                "entry_price": 9188.88,
+                "exit_price": 9894.32,
+                "profit": 75.6881981061324,
+                "pct_profit": 0.013133884434229318,
+                "duration": 19
+            },
+            {
+                "entry_idx": 639,
+                "exit_idx": 650,
+                "entry_price": 9446.19,
+                "exit_price": 9516.51,
+                "profit": -304.16103069139353,
+                "pct_profit": -0.052095685244527214,
+                "duration": 11
+            },
+            {
+                "entry_idx": 713,
+                "exit_idx": 742,
+                "entry_price": 5406.92,
+                "exit_price": 10185.17,
+                "profit": 4274.730420230808,
+                "pct_profit": 0.7724002672501165,
+                "duration": 29
+            }
+        ]
+    }
+}

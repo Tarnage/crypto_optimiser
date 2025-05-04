@@ -1,0 +1,233 @@
+{
+    "timestamp": "2025-05-03T21:20:59.086783Z",
+    "theta": [
+        6.315320857484272,
+        1.5747450724624803,
+        0.4121222873516217,
+        400.0,
+        1.6885650524803522,
+        0.5,
+        6.06414311142028,
+        12.348199680408044
+    ],
+    "metrics": {
+        "profit": 4743.141965732284,
+        "trades": 46,
+        "num_buys": 23,
+        "num_sells": 23,
+        "total_return": 3.743141965732284,
+        "max_drawdown": 0.24638480709445434,
+        "win_rate": 0.43478260869565216,
+        "avg_trade_return": 0.08933293473071337,
+        "time_in_market": 0.36536030341340076,
+        "trade_info": [
+            {
+                "entry_idx": 4,
+                "exit_idx": 19,
+                "entry_price": 39231.64,
+                "exit_price": 43524.6,
+                "profit": 43.85888889681905,
+                "pct_profit": 0.043858888896819055,
+                "duration": 15
+            },
+            {
+                "entry_idx": 49,
+                "exit_idx": 112,
+                "entry_price": 42736.0,
+                "exit_price": 66945.72,
+                "profit": 494.70030003681404,
+                "pct_profit": 0.4739149182890304,
+                "duration": 63
+            },
+            {
+                "entry_idx": 124,
+                "exit_idx": 127,
+                "entry_price": 60592.76,
+                "exit_price": 63101.43,
+                "profit": -30.99385241262803,
+                "pct_profit": -0.020144725425941982,
+                "duration": 3
+            },
+            {
+                "entry_idx": 130,
+                "exit_idx": 131,
+                "entry_price": 60702.68,
+                "exit_price": 62219.44,
+                "profit": -53.65426331064373,
+                "pct_profit": -0.03559000861246995,
+                "duration": 1
+            },
+            {
+                "entry_idx": 161,
+                "exit_idx": 163,
+                "entry_price": 40596.54,
+                "exit_price": 47245.25,
+                "profit": 138.11598024332557,
+                "pct_profit": 0.09499616777685965,
+                "duration": 2
+            },
+            {
+                "entry_idx": 187,
+                "exit_idx": 188,
+                "entry_price": 46856.29,
+                "exit_price": 49011.75,
+                "profit": -25.181380234027074,
+                "pct_profit": -0.015817181108448805,
+                "duration": 1
+            },
+            {
+                "entry_idx": 194,
+                "exit_idx": 198,
+                "entry_price": 46764.3,
+                "exit_price": 47028.3,
+                "profit": -84.277976258943,
+                "pct_profit": -0.05378830710606166,
+                "duration": 4
+            },
+            {
+                "entry_idx": 236,
+                "exit_idx": 254,
+                "entry_price": 32898.79,
+                "exit_price": 35589.77,
+                "profit": 26.481011597128145,
+                "pct_profit": 0.017861586793921497,
+                "duration": 18
+            },
+            {
+                "entry_idx": 273,
+                "exit_idx": 303,
+                "entry_price": 36693.3,
+                "exit_price": 56622.66,
+                "profit": 681.9908694571234,
+                "pct_profit": 0.45193429846865757,
+                "duration": 30
+            },
+            {
+                "entry_idx": 366,
+                "exit_idx": 383,
+                "entry_price": 45240.96,
+                "exit_price": 47981.48,
+                "profit": -4.60987405306787,
+                "pct_profit": -0.0021039665824951963,
+                "duration": 17
+            },
+            {
+                "entry_idx": 398,
+                "exit_idx": 411,
+                "entry_price": 30424.62,
+                "exit_price": 39134.35,
+                "profit": 459.7050061144664,
+                "pct_profit": 0.2102537325034791,
+                "duration": 13
+            },
+            {
+                "entry_idx": 413,
+                "exit_idx": 415,
+                "entry_price": 34035.02,
+                "exit_price": 38173.73,
+                "profit": 146.3705858478893,
+                "pct_profit": 0.05531486560019654,
+                "duration": 2
+            },
+            {
+                "entry_idx": 457,
+                "exit_idx": 461,
+                "entry_price": 18192.03,
+                "exit_price": 18732.43,
+                "profit": -86.98728882548448,
+                "pct_profit": -0.03115026816688405,
+                "duration": 4
+            },
+            {
+                "entry_idx": 514,
+                "exit_idx": 527,
+                "entry_price": 10553.66,
+                "exit_price": 10923.5,
+                "profit": -70.68793422677163,
+                "pct_profit": -0.026127319811326242,
+                "duration": 13
+            },
+            {
+                "entry_idx": 542,
+                "exit_idx": 554,
+                "entry_price": 10167.19,
+                "exit_price": 11761.8,
+                "profit": 233.10246305538294,
+                "pct_profit": 0.08846963812026713,
+                "duration": 12
+            },
+            {
+                "entry_idx": 557,
+                "exit_idx": 558,
+                "entry_price": 11531.74,
+                "exit_price": 11859.37,
+                "profit": -92.8290927647895,
+                "pct_profit": -0.03236794854896125,
+                "duration": 1
+            },
+            {
+                "entry_idx": 571,
+                "exit_idx": 572,
+                "entry_price": 11600.85,
+                "exit_price": 11770.08,
+                "profit": -125.91868231988838,
+                "pct_profit": -0.04537441032338152,
+                "duration": 1
+            },
+            {
+                "entry_idx": 589,
+                "exit_idx": 601,
+                "entry_price": 9162.43,
+                "exit_price": 9437.16,
+                "profit": -81.82715673679058,
+                "pct_profit": -0.03088767455795019,
+                "duration": 12
+            },
+            {
+                "entry_idx": 604,
+                "exit_idx": 627,
+                "entry_price": 9076.82,
+                "exit_price": 9463.07,
+                "profit": -48.937583043936684,
+                "pct_profit": -0.019061459519964012,
+                "duration": 23
+            },
+            {
+                "entry_idx": 628,
+                "exit_idx": 629,
+                "entry_price": 9264.26,
+                "exit_price": 9894.32,
+                "profit": 12.31601355393559,
+                "pct_profit": 0.00489037311128988,
+                "duration": 1
+            },
+            {
+                "entry_idx": 657,
+                "exit_idx": 661,
+                "entry_price": 9315.5,
+                "exit_price": 9546.56,
+                "profit": -90.50439533039116,
+                "pct_profit": -0.03576208426815517,
+                "duration": 4
+            },
+            {
+                "entry_idx": 685,
+                "exit_idx": 688,
+                "entry_price": 6619.0,
+                "exit_price": 6908.24,
+                "profit": -43.88545318052911,
+                "pct_profit": -0.017984134159238413,
+                "duration": 3
+            },
+            {
+                "entry_idx": 719,
+                "exit_idx": 742,
+                "entry_price": 4841.67,
+                "exit_price": 10185.17,
+                "profit": 2346.795779627291,
+                "pct_profit": 0.9793225174371649,
+                "duration": 23
+            }
+        ]
+    }
+}
