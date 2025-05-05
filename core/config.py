@@ -15,7 +15,7 @@ BOUNDS = [
 # Optimizer parameters
 POP_SIZE = 50
 GENS = 100
-SEED_ITER = (0, 100)    # Seed range for repeatability
+SEED_ITER = (0, 20)    # Seed range for repeatability
 
 # File paths
 DATA_FILE = "data/BTC-Daily.csv"
